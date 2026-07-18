@@ -92,9 +92,10 @@ export default function AdminOrders() {
   const [to, setTo] = useState("");
   const [selected, setSelected] = useState(null);
 
-  const load = async () => {
-    const params = {};
-    if (statusF) params.status = statusF;
+ const load = useCallback(async () => {
+  const params = {};
+
+  if (statusF) params.status = statusF;
   if (q) params.q = q;
   if (from) params.fromDate = from;
   if (to) params.toDate = to;
