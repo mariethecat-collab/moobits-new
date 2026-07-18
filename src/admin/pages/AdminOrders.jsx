@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import api from "../../lib/api";
 import { Download, Copy, Search } from "lucide-react";
 
@@ -95,12 +95,13 @@ export default function AdminOrders() {
   const load = async () => {
     const params = {};
     if (statusF) params.status = statusF;
-    if (q) params.q = q;
-    if (from) params.fromDate = from;
-    if (to) params.toDate = to;
-    const { data } = await api.get("/admin/orders", { params });
-    setOrders(data);
-  };
+  if (q) params.q = q;
+  if (from) params.fromDate = from;
+  if (to) params.toDate = to;
+
+  const { data } = await api.get("/admin/orders", { params });
+  setOrders(data);
+}, [statusF, q, from, to]);
 
   useEffect(() => { load(); /* eslint-disable-next-line */ }, [statusF, from, to]);
 
