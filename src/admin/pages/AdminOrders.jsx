@@ -251,7 +251,8 @@ Treat Yourself, Fix Your Mood.`;
     order={selected}
     onClose={() => setSelected(null)}
     onSaved={() => {
-      // isi function kalau ada
+      setSelected(null);
+      load();
     }}
   />
 )}
