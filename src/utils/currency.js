@@ -1,0 +1,1 @@
+export const formatIDR = (n) => `Rp${n.toLocaleString("id-ID")}`;
